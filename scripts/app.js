@@ -59,7 +59,7 @@ function getGroups() {
     let isNum = parseInt(number);
 
     if (isNum) {
-        if (isNum >= groupNum-1) {
+        if (isNum >= groupNum) {
             console.log("I am firing");
             return (false)
 
@@ -89,14 +89,13 @@ function groupRandomizer(array, groupSize) {
     // When a group is full, start a new group.
     let oneGuy = false;
     if (shuffledArray.length % groupSize == 1) {
-        groupSize++;
         oneGuy = true;
     }
     while (shuffledArray.length > 0) {
         const group = shuffledArray.splice(0, groupSize);
         groups.push(group);
         if (oneGuy) {
-            groupSize--;
+            groupSize++;
             oneGuy = false;
         }
     }
@@ -137,12 +136,12 @@ function addNewName(){
 function reloadPage() {
     appendNames.textContent = "";
     let temp = getlocalStorage();
-    let counter = 0;
+    let counter = 1;
     temp.map(element => {
-        createEntry(element);
+        createEntry(element, counter);
         counter++;
     });
-    totalElement.textContent = "Total Names: " + counter;
+    totalElement.textContent = "Total Names: " + (counter-1);
 }
 
 function removeName(name) {
@@ -151,7 +150,7 @@ function removeName(name) {
 
 }
 
-function createEntry(name) {
+function createEntry(name, count) {
     // Create div element
     const divElement = document.createElement('div');
     divElement.id = name;
@@ -159,8 +158,7 @@ function createEntry(name) {
 
     // Create p element
     const pElement = document.createElement('p');
-    const pText = document.createTextNode(name);
-    pElement.appendChild(pText);
+    pElement.textContent = `#${count}: ${name}`;
 
     // Create button element
     const buttonElement = document.createElement('button');
@@ -185,7 +183,7 @@ function createGroup(group, count) {
     pGroups.className = ("bold text-3xl")
     let pNames = document.createElement('p');
     pNames.className = ("text-2xl")
-    pGroups.textContent = "Group #" + count;
+    pGroups.textContent = "Group #" + count +" "+ "("+ group.length +" " +"Members)";
 
     // if(group.length >1){
     //     pNames.textContent = group.join(', ');
