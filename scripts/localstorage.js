@@ -3,13 +3,15 @@ const saveToLocalStorage = (name) => {
     //AKA saves the array in favorites
     let favorites = getlocalStorage();
 
-
-    //If the name is already included in the local storage we will not push into favorites
+    if(name){
+        //If the name is already included in the local storage we will not push into favorites
     if(!favorites.includes(name)) {
         favorites.push(name);
     }
     //JSON.stringify insures what ever we save into local storage is a string
     localStorage.setItem("NameList", JSON.stringify(favorites));
+    }
+    
 }
 
 const getlocalStorage = () => {
@@ -31,13 +33,14 @@ const removeFromLocalStorage = (name) => {
 
     //We're finding the Index of our parameter (name)
     let namedIndex = favorites.indexOf(name);
-
-    //remove the name from the array using the .splice method
+    if(name){
+        //remove the name from the array using the .splice method
     favorites.splice(namedIndex, 1);
 
     //We set our new mutated favotires array inside our local storage.
     localStorage.setItem("NameList", JSON.stringify(favorites))
-
+    }
+    
 }
 
 export {saveToLocalStorage, getlocalStorage, removeFromLocalStorage};

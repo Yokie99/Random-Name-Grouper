@@ -7,15 +7,27 @@ let modalBodyDiv = document.getElementById("modalBodyDiv")
 
 let getGroupsBtn = document.getElementById("getGroupsBtn");
 let addNameBtn = document.getElementById("addNameBtn");
+let removeNameBtn = document.getElementById("removeNameBtn");
 
 let groupSizeInput = document.getElementById("groupSizeInput");
 let nameInput = document.getElementById("nameInput");
+let removeInput = document.getElementById("removeInput");
 
 let totalElement = document.getElementById('totalElement');
 
 reloadPage();
+removeNameBtn.addEventListener('click', ()=>{
+    removeFromLocalStorage(removeInput.value);
+    reloadPage();
+})
 
-
+removeInput.addEventListener('keydown', (event) =>{
+    if (event.key === "Enter") {
+        console.log(removeInput.value);
+        removeFromLocalStorage(removeInput.value);
+        reloadPage();
+    }
+})
 getGroupsBtn.addEventListener('click', () => {
     addNewGroups()
 
@@ -170,8 +182,9 @@ function createEntry(name) {
 function createGroup(group, count) {
     let divElement = document.createElement('div');
     let pGroups = document.createElement('p');
+    pGroups.className = ("bold text-3xl")
     let pNames = document.createElement('p');
-
+    pNames.className = ("text-2xl")
     pGroups.textContent = "Group #" + count;
 
     // if(group.length >1){

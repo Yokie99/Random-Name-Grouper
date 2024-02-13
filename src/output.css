@@ -1125,6 +1125,10 @@ input:checked + .toggle-bg {
   z-index: 50;
 }
 
+.row-span-1 {
+  grid-row: span 1 / span 1;
+}
+
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -1251,8 +1255,40 @@ input:checked + .toggle-bg {
   width: 100%;
 }
 
+.w-\[\] {
+  width: ;
+}
+
+.w-\[10vw\] {
+  width: 10vw;
+}
+
+.w-\[12vw\] {
+  width: 12vw;
+}
+
+.w-\[14vw\] {
+  width: 14vw;
+}
+
+.w-\[16vw\] {
+  width: 16vw;
+}
+
 .max-w-2xl {
   max-width: 42rem;
+}
+
+.max-w-7 {
+  max-width: 1.75rem;
+}
+
+.max-w-1 {
+  max-width: 0.25rem;
+}
+
+.max-w-8 {
+  max-width: 2rem;
 }
 
 .flex-1 {
@@ -1327,6 +1363,10 @@ input:checked + .toggle-bg {
 
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .items-start {
@@ -1550,6 +1590,11 @@ input:checked + .toggle-bg {
   background-color: transparent;
 }
 
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -1624,6 +1669,16 @@ input:checked + .toggle-bg {
 .px-96 {
   padding-left: 24rem;
   padding-right: 24rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.px-1\.5 {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
 }
 
 .pt-2 {
